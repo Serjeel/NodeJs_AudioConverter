@@ -1,0 +1,1 @@
+This folder is needed to receive audio files
