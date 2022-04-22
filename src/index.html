@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Аудио конвертер</title>
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+</head>
+
+<body>
+  <div class="main-form">
+    <div class="container">
+      <br /><br />
+      <h1 class="header">Аудио конвертер</h1>
+      <div class="recordAndChoice">
+        <form action="/startRecord" method="post">
+          <button class="startRecord" id="startRecord" name="startRecord">Запись</button>
+        </form>
+        <form action="/stopRecord" method="post">
+          <button class="stopRecord" id="stopRecord" name="stopRecord">Стоп</button>
+        </form>
+        <label class="timerDisplay">
+          00 : 00 : 00
+        </label>
+      </div>
+      <form action="/convert" method="post" enctype="multipart/form-data">
+        <div class="choiceFile">
+          <input class="fileIn" type="file" name="file" onchange="handleChangeIn(event)" />
+        </div>
+        <div class="formatAndBitrate">
+          <label for="to">Формат:</label>
+          <select class="format" name="to">
+            <option>mp3</option>
+            <option>wav</option>
+            <option>aiff</option>
+            <option>flac</option>
+          </select>
+          <label>Битрейт:</label>
+          <select class="bitrate" name="bitrate">
+            <option>320</option>
+            <option>256</option>
+            <option>192</option>
+            <option>160</option>
+            <option>128</option>
+            <option>96</option>
+            <option>64</option>
+            <option>32</option>
+            <option>16</option>
+          </select>
+        </div>
+        <button class="convert">
+          Конвертертировать
+        </button>
+        <div class="info">
+          <p id="input_info">Входящий файл: </p>
+          <input type="file" class="fileOut" name="fileOut" onchange="handleChangeOut(event)" />
+          <p id="output_info">Выходящий файл: </p>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="/lossessScript.js"></script>
+  <script src="/timer.js"></script>
+</body>
+
+</html>
