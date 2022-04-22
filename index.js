@@ -50,6 +50,13 @@ app.post("/stopRecord", (req, res) => {
 
   const file = "tmp/demo.wav"
   res.download(file);
+
+  setTimeout(() => {
+    fs.unlink(file, function (err) {
+      if (err) throw err;
+      console.log("File deleted");
+    });
+  }, 1000);
 });
 
 app.post("/convert", (req, res) => {
