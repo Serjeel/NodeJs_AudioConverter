@@ -17,6 +17,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "node-audiorecorder": "^3.0.0",
     "node-microphone": "^0.1.5",
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "recorder-js": "^1.0.7"
   }
 }

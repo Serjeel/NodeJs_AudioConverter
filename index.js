@@ -13,7 +13,12 @@ const fileUpload = require("express-fileupload");
 const app = express();
 app.use(express.static('src'))
 
-let mic = new Mic();
+const options = {
+  channels: 2,
+  rate: 44100,
+}
+
+let mic = new Mic(options);
 
 const PORT = process.env.PORT || 5000;
 
@@ -42,6 +47,7 @@ app.post("/startRecord", (req, res) => {
   let writableStream = fs.createWriteStream("tmp/demo.wav");
   let micStream = mic.startRecording();
   micStream.pipe(writableStream);
+  console.log('started recording');
 });
 
 app.post("/stopRecord", (req, res) => {
@@ -62,7 +68,8 @@ app.post("/stopRecord", (req, res) => {
 app.post("/convert", (req, res) => {
   let to = req.body.to;
   let file = req.files.file;
-  let fileName = `output.${to}`;
+  let fileName = file.name.split('.')[0];
+  let toFormat = `.${to}`;
   let bitrate = req.body.bitrate;
   console.log(to);
   console.log(file);
@@ -76,12 +83,17 @@ app.post("/convert", (req, res) => {
     .audioBitrate(bitrate)
     .on("end", function (stdout, stderr) {
       console.log("Finished");
-      res.download(__dirname + fileName, function (err) {
+      res.download("tmp/" + fileName + toFormat, function (err) {
         if (err) throw err;
         
         fs.unlink("tmp/" + file.name, function (err) {
           if (err) throw err;
-          console.log("File deleted");
+          console.log("Input file deleted");
+        });
+
+        fs.unlink("tmp/" + fileName + toFormat, function (err) {
+          if (err) throw err;
+          console.log("Output file deleted");
         });
       });
     })
@@ -92,7 +104,7 @@ app.post("/convert", (req, res) => {
         console.log("File deleted");
       });
     })
-    .saveToFile(__dirname + fileName);
+    .saveToFile("tmp/" + fileName + toFormat);
   //.pipe(res, { end: true });
 });
 
