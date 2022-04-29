@@ -24,8 +24,9 @@
         </label>
       </div>
       <form action="/convert" method="post" enctype="multipart/form-data">
+        <label class="labelInput">Выберите входящий файл</label>
         <div class="choiceFile">
-          <input class="fileIn" type="file" name="file" onchange="handleChangeIn(event)" />
+            <input class="fileIn" type="file" name="file" id="file" onchange="handleChangeIn(event)" />
         </div>
         <div class="formatAndBitrate">
           <label for="to">Формат:</label>
@@ -51,7 +52,10 @@
         </button>
         <div class="info">
           <p id="input_info">Входящий файл: </p>
-          <input type="file" class="fileOut" name="fileOut" onchange="handleChangeOut(event)" />
+          <div class="fileOutBlock">
+            <label class="labelOutput">Выберите выходящий файл</label>
+            <input type="file" class="fileOut" name="fileOut" onchange="handleChangeOut(event)" />
+          </div>
           <p id="output_info">Выходящий файл: </p>
         </div>
       </form>

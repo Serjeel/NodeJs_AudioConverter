@@ -3,8 +3,12 @@ const getAudioInfos = (file) =>
         const reader = new FileReader();
         reader.onload = () => {
             const media = new Audio(reader.result);
+            let dev = 0;
+            if (file.name.slice(-3) === "mp3") {
+                dev = 0.06;
+            }
             media.onloadedmetadata = () => resolve({
-                "Продолжительность": (Math.round(media.duration * 100) / 100) + " s",
+                "Продолжительность": (Math.round((media.duration - dev) * 100) / 100) + " s",
                 "Размер файла": (Math.round(file.size / 125)) + " kb",
                 "Битрейт": (Math.round(file.size / media.duration / 125)) + " kb/s",
             });

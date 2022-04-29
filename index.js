@@ -99,6 +99,12 @@ app.post("/convert", (req, res) => {
     })
     .on("error", function (err) {
       console.log("an error happened: " + err.message);
+
+      fs.unlink("tmp/" + fileName + toFormat, function (err) {
+        if (err) throw err;
+        console.log("Output file deleted");
+      });
+
       fs.unlink("tmp/" + file.name, function (err) {
         if (err) throw err;
         console.log("File deleted");

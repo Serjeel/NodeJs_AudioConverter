@@ -30,6 +30,12 @@
     font-size: 25px;
 }
 
+.labelInput {
+    display: flex;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
 .timerDisplay {
     display: flex;
     align-items: center;
@@ -64,9 +70,13 @@
     display: flex;
 }
 
-.fileOut {
+.fileOutBlock {
     margin-top: 15px;
     margin-left: 40px;
     margin-right: 40px;
+}
+
+.fileOut {
+    margin-top: 10px;
     width: 200px;
 }
