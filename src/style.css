@@ -5,7 +5,7 @@
 }
 
 .container {
-    width: 600px;
+    width: 550px;
 }
 
 .header {
@@ -68,15 +68,15 @@
 
 .info {
     display: flex;
+    justify-content: space-between;
 }
 
 .fileOutBlock {
+    display: flex;
+    flex-direction: column;
     margin-top: 15px;
-    margin-left: 40px;
-    margin-right: 40px;
 }
 
 .fileOut {
     margin-top: 10px;
-    width: 200px;
 }

@@ -68,9 +68,9 @@ app.post("/stopRecord", (req, res) => {
 app.post("/convert", (req, res) => {
   let to = req.body.to;
   let file = req.files.file;
-  let fileName = file.name.split('.')[0];
-  let toFormat = `.${to}`;
   let bitrate = req.body.bitrate;
+  let fileName = file.name.split('.')[0] + `(${bitrate}_kbs)`;
+  let toFormat = `.${to}`;
   console.log(to);
   console.log(file);
 

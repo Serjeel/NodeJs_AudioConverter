@@ -9,8 +9,8 @@ const getAudioInfos = (file) =>
             }
             media.onloadedmetadata = () => resolve({
                 "Продолжительность": (Math.round((media.duration - dev) * 100) / 100) + " s",
-                "Размер файла": (Math.round(file.size / 125)) + " kb",
-                "Битрейт": (Math.round(file.size / media.duration / 125)) + " kb/s",
+                "Размер": (Math.round(file.size / 125)) + " kb",
+                "Битрейт": (Math.floor(file.size / media.duration / 125)) + " kb/s",
             });
         };
         reader.readAsDataURL(file);

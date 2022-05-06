@@ -26,7 +26,7 @@
       <form action="/convert" method="post" enctype="multipart/form-data">
         <label class="labelInput">Выберите входящий файл</label>
         <div class="choiceFile">
-            <input class="fileIn" type="file" name="file" id="file" onchange="handleChangeIn(event)" />
+          <input class="fileIn" type="file" name="file" id="file" onchange="handleChangeIn(event)" />
         </div>
         <div class="formatAndBitrate">
           <label for="to">Формат:</label>
@@ -44,24 +44,25 @@
             <option>96</option>
             <option>64</option>
             <option>32</option>
-            <option>16</option>
           </select>
         </div>
         <button class="convert">
           Конвертертировать
         </button>
-        <div class="info">
-          <p id="input_info">Входящий файл: </p>
+        <div class="infoBlock">
           <div class="fileOutBlock">
             <label class="labelOutput">Выберите выходящий файл</label>
             <input type="file" class="fileOut" name="fileOut" onchange="handleChangeOut(event)" />
           </div>
-          <p id="output_info">Выходящий файл: </p>
+          <div class="info">
+            <p id="input_info">Входящий файл: </p>
+            <p id="output_info">Выходящий файл: </p>
+          </div>
         </div>
       </form>
     </div>
   </div>
-  <script src="/lossessScript.js"></script>
+  <script src="/fileInfoScript.js"></script>
   <script src="/timer.js"></script>
 </body>
 
