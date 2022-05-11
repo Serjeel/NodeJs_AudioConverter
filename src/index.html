@@ -30,12 +30,11 @@
         </div>
         <div class="formatAndBitrate">
           <label for="to">Формат:</label>
-          <select class="format" name="to">
+          <select class="format" name="to" id="format" onchange="onChangeFormat()">
             <option>mp3</option>
-            <option>wav</option>
           </select>
-          <label>Битрейт:</label>
-          <select class="bitrate" name="bitrate">
+          <label id="paramLabel">Битрейт:</label>
+          <select class="bitrate" name="bitrate" id="bitrate">
             <option>320</option>
             <option>256</option>
             <option>192</option>
@@ -52,7 +51,7 @@
         <div class="infoBlock">
           <div class="fileOutBlock">
             <label class="labelOutput">Выберите выходящий файл</label>
-            <input type="file" class="fileOut" name="fileOut" onchange="handleChangeOut(event)" />
+            <input type="file" class="fileOut" name="fileOut" id="fileOut" onchange="handleChangeOut(event)" />
           </div>
           <div class="info">
             <p id="input_info">Входящий файл: </p>
